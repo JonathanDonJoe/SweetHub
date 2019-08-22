@@ -1,6 +1,26 @@
 <% include head %>
+<div class="container">
+    <div class="row">
+      <div class="col col-12">
+          <h1>Events</h1>
+      </div>
 
-
+<!--change calls-->
+      <% eventsData.forEach((event, i) => { %>
+          <div class="col col-lg-3 col-md-4 col-sm-6 col-12 poster">
+              <!-- Check this link for /events/1 -->
+                <a href="/events/<%= event.eventId %>">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="<%= event.avatar_url %> " alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text"><%= event.name%></br>Created by: <%= event.username %></p>
+                        </div>
+                    </div>
+                <a>
+          </div>
+      <%}) %>
+    </div>
+</div>
 
 
 

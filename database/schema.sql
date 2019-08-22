@@ -4,7 +4,7 @@ CREATE TABLE users (
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL,
-    avatar_url VARCHAR(100),
+    avatar_url VARCHAR DEFAULT 'https://png.pngtree.com/png-clipart/20190117/ourmid/pngtree-delicious-drink-taiwan-milk-tea-png-image_437973.jpg',
     favorite_dessert VARCHAR(100)
 );
 
@@ -12,7 +12,7 @@ CREATE TABLE events (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     location VARCHAR(200),
-    avatar_url VARCHAR(100),
+    avatar_url VARCHAR DEFAULT 'https://png.pngtree.com/png-clipart/20190117/ourmid/pngtree-delicious-drink-taiwan-milk-tea-png-image_437973.jpg',
     event_time timestamp
 );
 

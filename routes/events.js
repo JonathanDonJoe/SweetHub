@@ -7,18 +7,19 @@ const db = require('../db');
 router.get('/', function(req, res, next) {
     console.log('sdfkaj');
     
-    const allEventsQuery = `SELECT * FROM events`;
-    // const allEventsQuery = `
-    // SELECT * FROM events, event_rels, users
-    // WHERE events.id = event_rels.eventId
-    //     AND users.id = event_rels.userId`
+    // NEED TO: Add a where clause for datetime>current
+    const allEventsQuery = `
+    SELECT users.username, events.avatar_url, events.name 
+    FROM events, event_rels, users
+    WHERE events.id = event_rels.eventId
+        AND users.id = event_rels.userId`
     
     db.any(allEventsQuery).then( resp => {
         console.log(resp);
-        res.render('events',{})
-        // res.render('events', {
-        //     parsedEventsData: parsedEventsData.results
-        // });
+        // res.render('events',{})
+        res.render('events', {
+            eventsData: resp
+        });
     });
 });
 

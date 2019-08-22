@@ -3,8 +3,8 @@ CREATE TABLE users (
     displayname VARCHAR(20) NOT NULL,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    group INTEGER, 
+    password VARCHAR(100) NOT NULL,
+    group_id INTEGER, 
     avatar_url VARCHAR(100),
     favorite_dessert VARCHAR(100)
 );

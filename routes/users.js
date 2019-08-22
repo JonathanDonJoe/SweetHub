@@ -8,21 +8,54 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-console.log('hi')
 router.post('/loginProcess', function(req, res){
+  console.log(req.body.username);
+  
   const checkUserQuery = `
-  SELECT * FROM users WHERE users = $1
+  SELECT * FROM users WHERE username = $1
   `;
   db.one(checkUserQuery, [req.body.username]).then( resp =>{
-    // const correctPass = bcrypt.compareSync(req.body.password, resp.password);
-    res.json(resp)
+    const correctPass = bcrypt.compareSync(req.body.password, resp.password);
+    console.log(correctPass);
+    console.log(resp);
+    res.redirect('/dashboard')
   })
   .catch((err)=>{
     res.json(err);
   })
 })
 
+router.post('/registerProcess', (req, res) => {
+  const {displayname, username, email, password, password2} = req.body;
+  const checkUserExistsQuery = `
+  SELECT * FROM users WHERE username=$1 OR email=$2
+  `;
 
+  db.any(checkUserExistsQuery, [username, email]).then( resp => {
+    if (resp.length > 0) {
+      res.redirect('/login?msg=userExists');
+    } else if (password !== password2) {
+      res.redirect('/register?msg=passwordDoesNotMatch')
+    } else {
+      insertUser();
+    }
+  function insertUser() {
+    const insertUserQuery = `
+      INSERT INTO users (displayname, username, email, password) 
+      VALUES
+      ($1, $2, $3, $4)
+      RETURNING id
+    `;
+    const hashedPass = bcrypt.hashSync(password, 10);
+    db.one(insertUserQuery, [displayname, username, email, hashedPass]).then( resp => {
+      res.redirect('/login?msg=registrationSuccessful')
+    })
+  }
+
+
+
+  })
+})
 
 
 

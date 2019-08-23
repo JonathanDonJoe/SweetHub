@@ -10,7 +10,18 @@ var groupsRouter = require('./routes/groups');
 var eventsRouter = require('./routes/events');
 var dashboardRouter = require('./routes/dashboard');
 
+const expressSession = require('express-session');
+require('dotenv').config()
+const sessionOptions = {
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}
+
 var app = express();
+
+app.use(expressSession(sessionOptions));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

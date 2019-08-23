@@ -5,7 +5,8 @@ const db = require('../db');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    console.log('sdfkaj');
+    // console.log('sdfkaj');
+    // console.log(req.session);
     
     // NEED TO: Add a where clause for datetime>current
     const allEventsQuery = `

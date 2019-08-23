@@ -1,8 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+html {
+  background-color: black;
+  color: white;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  background-image: radial-gradient(rgb(255, 255, 255), rgb(235, 235, 235), rgb(218, 218, 218));
+}
+
+.navbar {
+  background-image: linear-gradient(to bottom right, rgb(35, 44, 62), rgb(7, 30, 43), rgb(6, 8, 31));
+}
+
+input.form-control {
+  border-radius: 0 25px 25px 0;
+  text-align: center;
+}
+
+section {
+  padding: 60px;
+  background-image: linear-gradient(to bottom right, rgb(35, 44, 62), rgb(7, 30, 43), rgb(6, 8, 31));
+  color: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: 10px 10px;
+}
+
+.container {
+  width: 50vw;
+}
+
+/* add media queries below for standard widths */
+
+
+
+
+.btn {
+  background-color: black;
+  border: black;
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(41, 77, 131);
 }

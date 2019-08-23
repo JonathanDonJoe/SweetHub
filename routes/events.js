@@ -57,5 +57,38 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.post('/submitEvent', (req, res) => {
+  let {eventName, eventAvatarURL, eventTime, eventLocation, eventComments} = req.body;
+
+  if(eventAvatarURL === '') {
+    eventAvatarURL = 'https://png.pngtree.com/png-clipart/20190117/ourmid/pngtree-delicious-drink-taiwan-milk-tea-png-image_437973.jpg'
+  };
+
+  const submitEventQuery = `
+  INSERT INTO events(name, location, avatar_url, event_time, comments)
+  VALUES ($1, $2, $3, $4, $5)
+  RETURNING id
+  `
+  const submitEventRelsQuery = `
+  INSERT INTO event_rels(userId, eventId)
+  VALUES ($1,$2)
+  RETURNING id
+  `
+  const findUserQuery = `
+  SELECT * FROM users WHERE username=$1
+  `
+
+  db.one(submitEventQuery, [eventName, eventLocation, eventAvatarURL, eventTime, eventComments ]).then( resp => {
+    db.one(findUserQuery, [req.session.username]).then( resp1 => {
+      db.one(submitEventRelsQuery, [resp1.id, resp.id]).then( resp2 => {
+        res.redirect(`/events/${resp.id}?msg=createdEvent`)
+      })
+    })
+
+
+    // console.log('respid is');
+    // console.log(resp.id);
+  })
+});
 
 module.exports = router;

@@ -3,32 +3,39 @@
         <div class="row">
             <div class="col col-sm-6 offset-sm-3">
                 <h1><br>Create An Event!</h1>
-                <form>
+                <form action="/events/submitEvent" method="post">
                     <div class="form-group">
                         <label for="eventName">Event Name: </label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Jon's Awesome Event">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Jon's Awesome Event" name="eventName">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventAvatar">Event Avatar URL: </label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="image.com" name="eventAvatarURL">
                     </div>
                     <div class="form-group">
                         <label for="eventTime">Time: </label>
-                        <input type="datetime-local" class="form-control" id="exampleFormControlInput1">
+                        <input type="datetime-local" class="form-control" id="exampleFormControlInput1" name='eventTime'>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Select Location: </label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="form-control" id="exampleFormControlSelect1" name='eventLocation'>
                             <option>Sweet Hut - Lenox Mall</option>
                             <option>Sweet Hut - Midtown</option>
                             <option>Sweet Hut - Pleasant Hill</option>
                             <option>Sweet Hut - Doraville</option>
                             <option>Share Tea - Sandy Springs</option>
                             <option>Share Tea - Duluth</option>
-                            <option>Tea Top - Doaraville</option>
+                            <option>Tea Top - Doraville</option>
                             <option>Gong Cha - Peachtree Corners</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Additional Comments: </label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="eventComments"></textarea>
                     </div>
+                    <div class="row justify-content-start mt-4">
+                        <input type="submit" class="btn btn-primary mt-4" />
+                        </div>
                 </form>
                     
         </div>

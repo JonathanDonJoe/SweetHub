@@ -13,7 +13,7 @@ CREATE TABLE events (
     name VARCHAR(50) NOT NULL,
     location VARCHAR(200),
     avatar_url VARCHAR DEFAULT 'https://png.pngtree.com/png-clipart/20190117/ourmid/pngtree-delicious-drink-taiwan-milk-tea-png-image_437973.jpg',
-    event_time timestamp,
+    event_time text,
     comments VARCHAR(500)
 );
 

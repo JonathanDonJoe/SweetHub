@@ -21,8 +21,14 @@ router.get('/', function(req, res, next) {
         // res.render('events',{})
         res.render('events', {
             eventsData: resp
+          });
         });
-    });
+      });
+      
+router.get('/event-signup', (req, res) => {
+  res.render('event-signup', {
+
+  });
 });
 
 router.get('/:id', (req, res) => {
@@ -35,7 +41,7 @@ router.get('/:id', (req, res) => {
   WHERE events.id = event_rels.eventId
       AND users.id = event_rels.userId
       AND events.id = $1
-  `
+      `
 
   db.one(singleEventQuery,[eventId]).then( resp => {
     console.log(resp);
@@ -46,7 +52,10 @@ router.get('/:id', (req, res) => {
       event_time: resp.event_time,
       creator: resp.username
   })
+  }).catch(err => {
+    res.redirect('/events?msg=NoSuchEvent')
   });
 });
+
 
 module.exports = router;

@@ -1,8 +1,21 @@
 var express = require('express');
 var router = express.Router();
 
+///////// EXPAND THIS FOR ALL THE OTHER STUFF////////////
+router.all('/dashboard', (req, res, next) => {
+  if(! req.session.loggedin){
+    res.redirect('/login')
+  } else {
+    next();
+  }
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  // let msgforview;
+  // if(req.query.msg==="Bad"){
+  //   msgforview = "What are you doing here?"
+  // }
     res.render('index', { title: 'MeetDesserts' });
 });
 

@@ -8,6 +8,20 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+//get/logout
+router.get('/logout', function(req,res,next){
+  if(req.session) {
+    req.session.destroy(function(err){
+      if(err){
+        return next(err);
+      }else {
+     res.redirect('/login');
+      }
+    });
+  }
+});
+
+
 router.post('/loginProcess', function(req, res){
   console.log(req.body.username);
   

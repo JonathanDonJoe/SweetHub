@@ -18,7 +18,17 @@ router.post('/loginProcess', function(req, res){
     const correctPass = bcrypt.compareSync(req.body.password, resp.password);
     console.log(correctPass);
     console.log(resp);
-    res.redirect('/dashboard')
+
+    if (correctPass) {
+      req.session.username = resp.username;
+      req.session.loggedin = true;
+      req.session.email = resp.email;
+      console.log(req.session);
+      
+      res.redirect('/dashboard')
+    } else {
+      res.redirect('/login?msg=badPassword')
+    }
   })
   .catch((err)=>{
     res.json(err);

@@ -2,13 +2,17 @@
 <div class="container">
     <div class="row">
         <div class="col col-sm-6 offset-sm-3">
-            <h1><br>Event name</h1>
+            <h1><br><%= title %></h1>
                 <br>
-            <img src="<%= imageBaseUrl + parsedData.poster_path %>" />
-            <p><br><strong>Where: </strong>Here!</p>
-                <br>
-            <p><strong>Who: </strong>You!</p>
-
+            <img src="<%= image_url %>" />
+            <br>
+            <br>
+            <br>
+            <br>
+            <p><strong>Created By: </strong><%= creator %></p>
+            <p><strong>Where: </strong><%= location %></p>
+            <p><strong>When: </strong><%= event_time %></p>
+            <button>Join</button>
         </div>
     </div>
 </div>

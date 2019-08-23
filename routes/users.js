@@ -31,7 +31,7 @@ router.post('/loginProcess', function(req, res){
     }
   })
   .catch((err)=>{
-    res.json(err);
+    res.redirect('/login?msg=userNotFound')
   })
 })
 

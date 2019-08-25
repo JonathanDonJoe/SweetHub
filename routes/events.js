@@ -5,29 +5,66 @@ const db = require('../db');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    // console.log('sdfkaj');
-    // console.log(req.session);
-    
-    // NEED TO: Add a where clause for datetime>current
-    const allEventsQuery = `
-    SELECT users.username, events.avatar_url, events.name 
-    FROM events, event_rels, users
-    WHERE events.id = event_rels.eventId
-        AND users.id = event_rels.userId
-    `
-    
-    db.any(allEventsQuery).then( resp => {
-        console.log(resp);
-        // res.render('events',{})
-        res.render('events', {
-            eventsData: resp
-          });
-        });
-      });
+  // console.log('sdfkaj');
+  // console.log(req.session);
+  
+  // NEED TO: Add a where clause for datetime>current
+  const allEventsQuery = `
+  SELECT users.username, events.avatar_url, events.name , events.id
+  FROM events, users
+  WHERE events.creator_id = users.id
+  `
+  
+  db.any(allEventsQuery).then( resp => {
+    console.log(resp);
+    // res.render('events',{})
+    res.render('events', {
+        eventsData: resp
+    });
+  });
+});
       
+// Require being logged in to create an event
+router.get('/event-signup', (req, res, next) => {
+  if(! req.session.loggedin){
+    res.redirect('/login?msg=mustLogIn')
+  } else {
+    next();
+  }
+});
+
 router.get('/event-signup', (req, res) => {
   res.render('event-signup', {
 
+  });
+});
+
+// Require being logged in to join an event
+router.get('/join-event:id', (req, res, next) => {
+  if(! req.session.loggedin){
+    res.redirect('/login?msg=mustLogIn')
+  } else {
+    next();
+  }
+});
+
+router.get('/join-event:id', (req, res) => {
+  const eventId = req.params.id;
+  const addEventQuery = `
+  INSERT INTO event_rels (userid, eventid)
+  VALUES ($1, $2)
+  RETURNING id
+  `;
+
+  db.one(addEventQuery, [req.session.userId, eventId]).then( resp => {
+    // res.render('join-event', {
+
+    // })
+    // .catch(err => {
+    //   res.json(err);
+    // })
+  
+  res.redirect(`/events?msg=joinedEvent`)
   });
 });
 
@@ -37,21 +74,34 @@ router.get('/:id', (req, res) => {
 
   const singleEventQuery = `
   SELECT users.username, events.avatar_url, events.name, events.location, event_time 
-  FROM events, event_rels, users
-  WHERE events.id = event_rels.eventId
-      AND users.id = event_rels.userId
+  FROM events, users
+  WHERE events.creator_id = users.id
       AND events.id = $1
       `
 
+  const eventParticipantsQuery = `
+  SELECT  DISTINCT users.username
+  FROM events, users, event_rels
+  WHERE events.id = event_rels.eventid
+    AND users.id = event_rels.userid
+    AND events.id = $1
+  `
+
   db.one(singleEventQuery,[eventId]).then( resp => {
     console.log(resp);
-    res.render('single-event', {
-      title: resp.name,
-      image_url: resp.avatar_url,
-      location: resp.location,
-      event_time: resp.event_time,
-      creator: resp.username
-  })
+
+    db.any(eventParticipantsQuery, [eventId]).then( resp2 => {
+      console.log(resp2);
+      res.render('single-event', {
+        title: resp.name,
+        image_url: resp.avatar_url,
+        location: resp.location,
+        event_time: resp.event_time,
+        creator: resp.username,
+        eventId,
+        participants: resp2
+      })
+    })
   }).catch(err => {
     res.redirect('/events?msg=NoSuchEvent')
   });
@@ -65,8 +115,8 @@ router.post('/submitEvent', (req, res) => {
   };
 
   const submitEventQuery = `
-  INSERT INTO events(name, location, avatar_url, event_time, comments)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO events(name, location, avatar_url, event_time, comments, creator_id)
+  VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING id
   `
   const submitEventRelsQuery = `
@@ -74,18 +124,13 @@ router.post('/submitEvent', (req, res) => {
   VALUES ($1,$2)
   RETURNING id
   `
-  const findUserQuery = `
-  SELECT * FROM users WHERE username=$1
-  `
+  console.log(req.session);
 
-  db.one(submitEventQuery, [eventName, eventLocation, eventAvatarURL, eventTime, eventComments ]).then( resp => {
-    db.one(findUserQuery, [req.session.username]).then( resp1 => {
-      db.one(submitEventRelsQuery, [resp1.id, resp.id]).then( resp2 => {
-        res.redirect(`/events/${resp.id}?msg=createdEvent`)
-      })
+  db.one(submitEventQuery, [eventName, eventLocation, eventAvatarURL, eventTime, eventComments, req.session.userId]).then( resp => {
+    console.log(resp);
+    db.one(submitEventRelsQuery, [req.session.userId, resp.id]).then( resp2 => {
+      res.redirect(`/events/${resp.id}?msg=createdEvent`)
     })
-
-
     // console.log('respid is');
     // console.log(resp.id);
   })

@@ -14,7 +14,8 @@ CREATE TABLE events (
     location VARCHAR(200),
     avatar_url VARCHAR DEFAULT 'https://png.pngtree.com/png-clipart/20190117/ourmid/pngtree-delicious-drink-taiwan-milk-tea-png-image_437973.jpg',
     event_time text,
-    comments VARCHAR(500)
+    comments VARCHAR(500),
+    creator_id INTEGER NOT NULL
 );
 
 CREATE TABLE groups (

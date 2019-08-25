@@ -35,6 +35,7 @@ router.post('/loginProcess', function(req, res){
 
     if (correctPass) {
       req.session.username = resp.username;
+      req.session.userId = resp.id;
       req.session.loggedin = true;
       req.session.email = resp.email;
       console.log(req.session);

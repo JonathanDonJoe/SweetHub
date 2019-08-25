@@ -32,7 +32,7 @@ router.get('/event-signup', (req, res) => {
 });
 
 // Require being logged in to join an event
-router.get('/join-event', (req, res, next) => {
+router.get('/join-event:id', (req, res, next) => {
   if(! req.session.loggedin){
     res.redirect('/login?msg=mustLogIn')
   } else {
@@ -40,10 +40,21 @@ router.get('/join-event', (req, res, next) => {
   }
 });
 
-router.get('/join-event', (req, res) => {
-  res.render('join-event', {
+router.get('/join-event:id', (req, res) => {
+  const eventId = req.params.id;
+  const addEventQuery = `
+  INSERT INTO event_rels (userid, eventid)
+  VALUES ($1, $2)
+  RETURNING id
+  `;
 
-  });
+  // db.one(addEventQuery, [req.session.userId, eventId]).then( resp => {
+  //   res.render('join-event', {
+
+  //   }).catch(err => {
+  //     res.json(err);
+  //   })
+  // });
 });
 
 router.get('/:id', (req, res) => {
@@ -65,7 +76,8 @@ router.get('/:id', (req, res) => {
       image_url: resp.avatar_url,
       location: resp.location,
       event_time: resp.event_time,
-      creator: resp.username
+      creator: resp.username,
+      eventId
   })
   }).catch(err => {
     res.redirect('/events?msg=NoSuchEvent')

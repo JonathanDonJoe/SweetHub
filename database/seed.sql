@@ -7,10 +7,10 @@ select * from users;
 
 
 insert into events
-(name, location, event_time)
+(name, location, event_time, creator_id)
 VALUES
-('bobabattle', 'duluth', '1999-01-08 04:05:06'),
-('eat cake till I die', 'cheesecake factory', '1999-01-08 04:05:06');
+('bobabattle', 'duluth', '1999-01-08 04:05:06', 1),
+('eat cake till I die', 'cheesecake factory', '1999-01-08 04:05:06', 2);
 
 select * from events;
 

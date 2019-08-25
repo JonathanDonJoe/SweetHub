@@ -11,7 +11,9 @@
         <a href="#" class="list-group-item list-group-item-action active disabled">
           Your Events
         </a>
-        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+        <% myEvents.forEach( event => { %>
+          <a href="#" class="list-group-item list-group-item-action"><%= event.name %></a>
+        <% }) %>
         <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
         <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
         <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>

@@ -56,13 +56,16 @@ router.get('/join-event:id', (req, res) => {
   RETURNING id
   `;
 
-  // db.one(addEventQuery, [req.session.userId, eventId]).then( resp => {
-  //   res.render('join-event', {
+  db.one(addEventQuery, [req.session.userId, eventId]).then( resp => {
+    // res.render('join-event', {
 
-  //   }).catch(err => {
-  //     res.json(err);
-  //   })
-  // });
+    // })
+    // .catch(err => {
+    //   res.json(err);
+    // })
+  
+  res.redirect(`/events?msg=joinedEvent`)
+  });
 });
 
 router.get('/:id', (req, res) => {

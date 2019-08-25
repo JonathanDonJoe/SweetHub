@@ -34,7 +34,7 @@ router.get('/login', (req, res, next)=>{
 
 router.get('/dashboard', (req, res)=>{
   const eventsQuery = `
-  SELECT DISTINCT ON (events.id) events.name
+  SELECT DISTINCT ON (events.id) events.id, events.name
   FROM events, users, event_rels
   WHERE events.id = event_rels.eventid
     AND users.id = event_rels.userid

@@ -12,6 +12,12 @@
             <p><strong>Created By: </strong><%= creator %></p>
             <p><strong>Where: </strong><%= location %></p>
             <p><strong>When: </strong><%= event_time %></p>
+            <hX><strong>Participants: </strong></hX>
+            <ol>
+                <% participants.forEach( user => { %>
+                <li><%= user.username %></li>    
+                <% }) %>
+            </ol>
             <a class="btn btn-primary btn-lg" href="/events/join-event<%= eventId %>" role="button">Join This Event!</a>
         </div>
     </div>

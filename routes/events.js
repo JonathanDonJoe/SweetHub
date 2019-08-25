@@ -79,16 +79,29 @@ router.get('/:id', (req, res) => {
       AND events.id = $1
       `
 
+  const eventParticipantsQuery = `
+  SELECT  DISTINCT users.username
+  FROM events, users, event_rels
+  WHERE events.id = event_rels.eventid
+    AND users.id = event_rels.userid
+    AND events.id = $1
+  `
+
   db.one(singleEventQuery,[eventId]).then( resp => {
     console.log(resp);
-    res.render('single-event', {
-      title: resp.name,
-      image_url: resp.avatar_url,
-      location: resp.location,
-      event_time: resp.event_time,
-      creator: resp.username,
-      eventId
-  })
+
+    db.any(eventParticipantsQuery, [eventId]).then( resp2 => {
+      console.log(resp2);
+      res.render('single-event', {
+        title: resp.name,
+        image_url: resp.avatar_url,
+        location: resp.location,
+        event_time: resp.event_time,
+        creator: resp.username,
+        eventId,
+        participants: resp2
+      })
+    })
   }).catch(err => {
     res.redirect('/events?msg=NoSuchEvent')
   });

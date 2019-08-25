@@ -31,6 +31,21 @@ router.get('/event-signup', (req, res) => {
   });
 });
 
+// Require being logged in to join an event
+router.get('/join-event', (req, res, next) => {
+  if(! req.session.loggedin){
+    res.redirect('/login?msg=mustLogIn')
+  } else {
+    next();
+  }
+});
+
+router.get('/join-event', (req, res) => {
+  res.render('join-event', {
+
+  });
+});
+
 router.get('/:id', (req, res) => {
   const eventId = req.params.id;
   // console.log(eventId);

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-///////// EXPAND THIS FOR ALL THE OTHER STUFF////////////
+// Require being logged in to access dashboard
 router.all('/dashboard', (req, res, next) => {
   if(! req.session.loggedin){
     res.redirect('/login')
@@ -33,7 +33,7 @@ router.get('/login', (req, res, next)=>{
 
 router.get('/dashboard', (req, res, next)=>{
     res.render('dashboard', {
-
+      
   });
 });
 

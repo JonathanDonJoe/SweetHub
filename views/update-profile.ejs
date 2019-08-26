@@ -1,0 +1,41 @@
+<% include head %>
+
+<form action="/updating-profile" method="POST">
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Update Profile</h1>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col mt-4">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col mt-4">
+                            <input type="text" name="avatar_url" class="form-control" placeholder="Avatar URL">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col mt-4">
+                            <input type="text" name="favorite_dessert" class="form-control" placeholder="Favorite Dessert">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col mt-4">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start mt-4">
+                        <input type="submit" class="btn btn-primary mt-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+<% include footer %>

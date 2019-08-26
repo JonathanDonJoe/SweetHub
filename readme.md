@@ -12,7 +12,6 @@ Contents
 * Our Stretch Goals
 * Authors
 * Screenshots
-* Github Links
 * Code Examples
 
 What it is

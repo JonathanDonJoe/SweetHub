@@ -73,7 +73,7 @@ router.get('/:id', (req, res) => {
   // console.log(eventId);
 
   const singleEventQuery = `
-  SELECT users.username, events.avatar_url, events.name, events.location, event_time 
+  SELECT users.username, events.avatar_url, events.name, events.location, event_time, events.comments 
   FROM events, users
   WHERE events.creator_id = users.id
       AND events.id = $1
@@ -99,6 +99,7 @@ router.get('/:id', (req, res) => {
         event_time: resp.event_time,
         creator: resp.username,
         eventId,
+        comments:resp.comments,
         participants: resp2
       })
     })

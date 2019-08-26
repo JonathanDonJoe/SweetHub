@@ -39,7 +39,13 @@ section {
 
 /* add media queries below for standard widths */
 
+img {
+  max-height: 250px;
+}
 
+.row {
+  justify-content: space-evenly;
+}
 
 
 .btn {

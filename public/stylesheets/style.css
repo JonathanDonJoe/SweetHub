@@ -2,7 +2,7 @@
 
 html {
   background-color: black;
-  color: white;
+  /* color: white; */
 }
 
 body {
@@ -31,16 +31,24 @@ section {
   color: rgb(255, 255, 255);
   border-radius: 25px;
   box-shadow: 10px 10px;
+  position: fixed;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
 }
 
 .container {
   width: 50vw;
+  overflow: auto;
 }
 
 /* add media queries below for standard widths */
 
 img {
-  max-height: 250px;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .row {

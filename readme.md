@@ -55,5 +55,17 @@ Being able to add other users as friends for easy invitation to events, along wi
 Authors
 ---
 [Jonathan Joe](https://github.com/JonathanDonJoe)
+
 [Charles Cortez](https://github.com/chabco)
+
 [Sean Yim](https://github.com/superjjang1)
+
+Screenshots
+---
+[placeholder]
+[placeholder]
+[placeholder]
+[placeholder]
+
+Code Examples
+---

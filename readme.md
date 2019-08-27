@@ -1,9 +1,5 @@
 # Welcome to SweetHub
 
-[Live Demo][placeholder]
-
----
-
 Contents
 ---
 * What it is
@@ -12,7 +8,6 @@ Contents
 * Our Stretch Goals
 * Authors
 * Screenshots
-* Code Examples
 
 What it is
 ---
@@ -63,9 +58,8 @@ Authors
 Screenshots
 ---
 ![Imgur](https://i.imgur.com/nvLNmz7.png)
-[placeholder]
-[placeholder]
-[placeholder]
+![Imgur](https://i.imgur.com/CQRBNHR.png)
+![Imgur](https://i.imgur.com/rLh8aXQ.png)
+![Imgur](https://i.imgur.com/s7ipKqd.png)
+![Imgur](https://i.imgur.com/Vg7tAXA.png)
 
-Code Examples
----

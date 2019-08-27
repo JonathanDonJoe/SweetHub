@@ -76,9 +76,6 @@ router.post('/registerProcess', (req, res) => {
       res.redirect('/login?msg=registrationSuccessful')
     })
   }
-
-
-
   })
 })
 

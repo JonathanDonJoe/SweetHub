@@ -137,4 +137,17 @@ router.post('/submitEvent', (req, res) => {
   })
 });
 
+router.use('/delete/:id', (req, res)=>{
+  const eventId = req.params.id;
+  console.log(eventId);
+  const singleEventQuery = `
+  DELETE FROM events
+  WHERE
+  id = $1
+  returning id`;
+  db.one(singleEventQuery, [eventId]).then(resp =>{
+    res.redirect(`/events?msg=pleasework`)
+  })
+})
+
 module.exports = router;

@@ -116,7 +116,7 @@ router.post('/submitEvent', (req, res) => {
   let {eventName, eventAvatarURL, eventTime, eventLocation, eventComments} = req.body;
 
   if(eventAvatarURL === '') {
-    eventAvatarURL = 'https://png.pngtree.com/png-clipart/20190117/ourmid/pngtree-delicious-drink-taiwan-milk-tea-png-image_437973.jpg'
+    eventAvatarURL = 'https://i.ibb.co/ChkY28j/clipart2196143.png'
   };
 
   const submitEventQuery = `

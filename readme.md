@@ -62,7 +62,7 @@ Authors
 
 Screenshots
 ---
-[Imgur](https://i.imgur.com/nvLNmz7.png)
+![Imgur](https://i.imgur.com/nvLNmz7.png)
 [placeholder]
 [placeholder]
 [placeholder]

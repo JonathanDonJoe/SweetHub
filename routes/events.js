@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   `
   
   db.any(allEventsQuery).then( resp => {
-    console.log(resp);
+    // console.log(resp);
     // res.render('events',{})
     res.render('events', {
         eventsData: resp
@@ -88,10 +88,13 @@ router.get('/:id', (req, res) => {
   `
 
   db.one(singleEventQuery,[eventId]).then( resp => {
-    console.log(resp);
+    // console.log(resp);
+    // console.log(resp.username)
+    // console.log(req.session.username)
+    const isOwner = resp.username === req.session.username;
 
     db.any(eventParticipantsQuery, [eventId]).then( resp2 => {
-      console.log(resp2);
+      // console.log(resp2);
       res.render('single-event', {
         title: resp.name,
         image_url: resp.avatar_url,
@@ -100,7 +103,8 @@ router.get('/:id', (req, res) => {
         creator: resp.username,
         eventId,
         comments:resp.comments,
-        participants: resp2
+        participants: resp2,
+        isOwner
       })
     })
   }).catch(err => {
@@ -125,10 +129,10 @@ router.post('/submitEvent', (req, res) => {
   VALUES ($1,$2)
   RETURNING id
   `
-  console.log(req.session);
+  // console.log(req.session);
 
   db.one(submitEventQuery, [eventName, eventLocation, eventAvatarURL, eventTime, eventComments, req.session.userId]).then( resp => {
-    console.log(resp);
+    // console.log(resp);
     db.one(submitEventRelsQuery, [req.session.userId, resp.id]).then( resp2 => {
       res.redirect(`/events/${resp.id}?msg=createdEvent`)
     })
@@ -139,7 +143,7 @@ router.post('/submitEvent', (req, res) => {
 
 router.use('/delete/:id', (req, res)=>{
   const eventId = req.params.id;
-  console.log(eventId);
+  // console.log(eventId);
   const singleEventQuery = `
   DELETE FROM events
   WHERE

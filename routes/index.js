@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   // if(req.query.msg==="Bad"){
   //   msgforview = "What are you doing here?"
   // }
-    res.render('index', { title: 'MeetDesserts' });
+    res.render('index', { title: 'SweetHub' });
 });
 
 router.get('/register', (req, res, next)=>{

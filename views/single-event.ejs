@@ -20,7 +20,9 @@
                 <% }) %>
             </ol>
             <a class="btn btn-primary btn-lg" href="/events/join-event<%= eventId %>" role="button">Join This Event!</a>
+            <% if (isOwner) {%>
             <a class="btn btn-primary btn-lg" href="/events/delete/<%= eventId %>" role="button">Delete</a>
+            <% } %>
         </div>
     </div>
 </div>

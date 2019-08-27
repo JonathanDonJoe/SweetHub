@@ -130,5 +130,11 @@ router.post('/updating-profile', (req, res) => {
   res.redirect('/dashboard?msg=updatedProfile')
 });
 
+router.get('/about', (req, res) => {
+  res.render('about', {
+
+  });
+});
+
 
 module.exports = router;

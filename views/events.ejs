@@ -7,13 +7,13 @@
                 <a class="btn btn-primary btn-lg" href="/events/event-signup" role="button">Create Event</a>
           </div>
     
-    <!--change calls-->
+
           <% eventsData.forEach( event  => { %>
-              <div class="col col-lg-3 col-md-4 col-sm-6 col-12 poster">
+              <div class="poster">
                   <!-- Check this link for /events/1 -->
                     <a href="/events/<%= event.id %>">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="<%= event.avatar_url %> " alt="Card image cap">
+                        <div class="card">
+                            <img class="card-img-bottom" src="<%= event.avatar_url %> " alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text"><%= event.name%></br>Created by: <%= event.username %></p>
                             </div>

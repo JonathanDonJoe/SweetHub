@@ -35,6 +35,10 @@ input.form-control {
   text-align: center;
 }
 
+#home {
+  padding: 70px;
+}
+
 section {
   padding: 30px;
   background-image: linear-gradient(to bottom right, rgb(35, 158, 136), rgb(11, 157, 147), rgb(18, 131, 105));
@@ -65,14 +69,14 @@ footer {
 }
 
 img {
-  max-height: 190px;
-  max-width: 190px;
+  max-height: 220px;
+  max-width: 180px;
   overflow: hidden;
 }
 
 .card {
   margin: 40px auto;
-  height: 25vh;
+  height: 27vh;
   padding: 10px;
 }
 

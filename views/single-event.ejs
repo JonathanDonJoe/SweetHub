@@ -1,31 +1,32 @@
 <% include head %>
-<div class="container scrollbar">
-    <div class="row">
-        <div class="col col-sm-6 offset-sm-3">
-            <h1><br><%= title %></h1>
+<section>
+    <div class="container scrollbar">
+        <div class="row">
+            <div class="col col-sm-6">
+                <h1><br><%= title %></h1>
+                    <br>
+                <img class="card-img-top" src="<%= image_url %>" />
                 <br>
-            <img class="card-img-top" src="<%= image_url %>" />
-            <br>
-            <br>
-            <br>
-            <br>
-            <p><strong>Created By: </strong><%= creator %></p>
-            <p><strong>Where: </strong><%= location %></p>
-            <p><strong>When: </strong><%= event_time %></p>
-            <p><strong>Description: </strong><%= comments %></p>
-            <hX><strong>Participants: </strong></hX>
-            <ol>
-                <% participants.forEach( user => { %>
-                <li><%= user.username %></li>    
-                <% }) %>
-            </ol>
-            <a class="btn btn-primary btn-lg" href="/events/join-event<%= eventId %>" role="button">Join This Event!</a>
-            <% if (isOwner) {%>
-            <a class="btn btn-primary btn-lg" href="/events/delete/<%= eventId %>" role="button">Delete</a>
-            <% } %>
+                <br>
+                <br>
+                <br>
+                <p><strong>Created By: </strong><%= creator %></p>
+                <p><strong>Where: </strong><%= location %></p>
+                <p><strong>When: </strong><%= event_time %></p>
+                <p><strong>Description: </strong><%= comments %></p>
+                <hX><strong>Participants: </strong></hX>
+                <ol>
+                    <% participants.forEach( user => { %>
+                    <li><%= user.username %></li>    
+                    <% }) %>
+                </ol>
+                <a class="btn btn-primary btn-lg" href="/events/join-event<%= eventId %>" role="button">Join This Event!</a>
+                <% if (isOwner) {%>
+                <a class="btn btn-primary btn-lg" href="/events/delete/<%= eventId %>" role="button">Delete</a>
+                <% } %>
+            </div>
         </div>
     </div>
-</div>
-
+</section>
 
 <% include footer %>

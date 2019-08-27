@@ -18,19 +18,6 @@ CREATE TABLE events (
     creator_id INTEGER NOT NULL
 );
 
-CREATE TABLE groups (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    avatar_url VARCHAR(100),
-    is_private BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE group_rels (
-    id SERIAL PRIMARY KEY,
-    userId INTEGER NOT NULL,
-    groupId INTEGER NOT NULL
-);
-
 CREATE TABLE event_rels (
     id SERIAL PRIMARY KEY,
     userId INTEGER NOT NULL,

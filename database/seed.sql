@@ -1,34 +1,18 @@
 insert into users
 (displayname, username, email, password)
 VALUES
-('friend1','imurfriend', 'friend@gmail.com', 'qwerty1'),
-('friend2','urmyfriend','friends@gmail.com', 'qwerty2');
+('Charles','Charles', 'charles@gmail.com', 'qwerty1'),
+('Sean','Sean','sean@gmail.com', 'qwerty2');
 select * from users;
 
 
 insert into events
 (name, location, event_time, creator_id)
 VALUES
-('bobabattle', 'duluth', '1999-01-08 04:05:06', 1),
-('eat cake till I die', 'cheesecake factory', '1999-01-08 04:05:06', 2);
+('Bubble Tea Meetup', 'Doraville', '2019-08-30 16:00:00', 1),
+('Cortez Family Reunion (all friends welcome)', 'cheesecake factory', '2019-09-06 16:00:00', 2);
 
 select * from events;
-
-INSERT INTO groups
-(name, is_private)
-VALUES
-('boba buddies', TRUE),
-('Cake Friends', FALSE);
-
-select * from groups;
-
-
-INSERT INTO group_rels
-(userId, groupId)
-VALUES
-(1,1),
-(2,2);
-select * from group_rels;
 
 insert into event_rels
 (userId, eventId)

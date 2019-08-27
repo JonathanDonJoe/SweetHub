@@ -77,6 +77,7 @@ img {
 .card {
   margin: 40px auto;
   height: 27vh;
+  width: 23vh;
   padding: 10px;
 }
 
@@ -112,6 +113,10 @@ a.btn {
   margin-bottom: 10px;
 }
 
+.btn:hover {
+  background-color: rgb(223, 133, 23);
+}
+
 /* events button fixes */
 
 
@@ -123,6 +128,10 @@ a.btn {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.col > img {
+  align-self: center;
 }
 
 a {
@@ -179,4 +188,9 @@ a {
       bottom: 180px;
       padding: 0;
     }
+  }
+
+  
+#about-container{
+  max-width:60vh;
 }

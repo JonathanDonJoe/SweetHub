@@ -1,8 +1,8 @@
 insert into users
 (displayname, username, email, password)
 VALUES
-('Charles','Charles', 'charles@gmail.com', 'qwerty1'),
-('Sean','Sean','sean@gmail.com', 'qwerty2');
+('Sean','Sean','sean@gmail.com', 'qwerty2'),
+('Charles','Charles', 'charles@gmail.com', 'qwerty1');
 select * from users;
 
 
@@ -10,7 +10,7 @@ insert into events
 (name, location, event_time, creator_id)
 VALUES
 ('Bubble Tea Meetup', 'Doraville', '2019-08-30 16:00:00', 1),
-('Cortez Family Reunion (all friends welcome)', 'cheesecake factory', '2019-09-06 16:00:00', 2);
+('Cortez Reunion', 'cheesecake factory', '2019-09-06 16:00:00', 2);
 
 select * from events;
 

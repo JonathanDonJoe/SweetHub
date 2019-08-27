@@ -25,10 +25,9 @@ The following languages were used to create this website:
 * HTML
 * CSS
 * JavaScript
-* JQuery
 * Bootstrap
-* Express
-* PSQL
+* express.js
+* PostgreSQL
 
 
 MVP

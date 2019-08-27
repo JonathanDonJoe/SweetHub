@@ -40,7 +40,9 @@ section {
   background-image: linear-gradient(to bottom right, rgb(35, 158, 136), rgb(11, 157, 147), rgb(18, 131, 105));
   color: rgb(255, 255, 255);
   border-radius: 60px 60px 60px 0;
-  position: fixed;
+  /* position: fixed; */
+  justify-content: center;
+  align-content: center;
   max-width: 100vw;
 }
 

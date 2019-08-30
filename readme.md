@@ -2,14 +2,14 @@
 
 Contents
 ---
-* What it is
-* What we used
-* MVP
-* Our Stretch Goals
-* Authors
-* Screenshots
+* [Description](https://github.com/JonathanDonJoe/SweetHub#Description)
+* [Technologies Used](https://github.com/JonathanDonJoe/SweetHub#Technologies-Used)
+* [MVP](https://github.com/JonathanDonJoe/SweetHub#MVP)
+* [Stretch Goals](https://github.com/JonathanDonJoe/SweetHub#Stretch-Goals)
+* [Authors](https://github.com/JonathanDonJoe/SweetHub#Authors)
+* [Screenshots](https://github.com/JonathanDonJoe/SweetHub#Screenshots)
 
-What it is
+Description
 ---
 SweetHub is a website/application dedicated to bringing you a way to meet
 and enjoy Desserts. Staying completely focused on the Dessert portion, we've allocated
@@ -19,7 +19,7 @@ the day, we decided to create something seperate from facebook events, where we
 can set up events dedicated to just enjoying something Sweet.
 
 
-What we used
+Technologies Used
 ---
 The following languages were used to create this website:
 * HTML
@@ -34,7 +34,7 @@ MVP
 ---
 Our minimum product, was to just get a working event creator while logged-in, that sent and stored information to our database, and rendered out an event that we could look at on our screens.
 
-Our Stretch Goals
+Stretch Goals
 ---
 * creating a groups page/add group members/comment box
 One of our stretch goals was to create a page where you could join groups/comment/socialize.
@@ -48,10 +48,8 @@ Being able to add other users as friends for easy invitation to events, along wi
 
 Authors
 ---
-[Jonathan Joe](https://github.com/JonathanDonJoe)
-
-[Charles Cortez](https://github.com/chabco)
-
+[Jonathan Joe](https://github.com/JonathanDonJoe)  
+[Charles Cortez](https://github.com/chabco)  
 [Sean Yim](https://github.com/superjjang1)
 
 Screenshots

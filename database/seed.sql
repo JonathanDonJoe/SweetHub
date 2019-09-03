@@ -3,7 +3,6 @@ insert into users
 VALUES
 ('Sean','Sean','sean@gmail.com', 'qwerty2'),
 ('Charles','Charles', 'charles@gmail.com', 'qwerty1');
-select * from users;
 
 
 insert into events
@@ -12,13 +11,10 @@ VALUES
 ('Bubble Tea Meetup', 'Doraville', '2019-08-30 16:00:00', 1),
 ('Cortez Reunion', 'cheesecake factory', '2019-09-06 16:00:00', 2);
 
-select * from events;
-
 insert into event_rels
 (userId, eventId)
 VALUES
 (1,1),
 (2,2);
-select * from event_rels;
 
 
